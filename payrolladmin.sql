@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
 --
 -- Host: localhost    Database: payrolladmin
 -- ------------------------------------------------------
--- Server version	5.7.19-0ubuntu0.16.04.1
+-- Server version	5.7.20-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,7 +40,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'Abhijeet Gurle','dept 1','asd','daily','ada','city 1'),(3,'Sankalp','dept 1','ws','daily','ssasas','city 1'),(10,'sdadadsd','dept 3','asdsadsa','monthly','asdasddsdas','city 3'),(29,'Sankalp','dept 1','pune','daily','btech','city 4'),(123,'sdadsad','HouseKeeping','asdasdsad','monthly','adsasdadsa','Benglore'),(3000,'adasdad','dept 3','asdad','monthly','asddasd','city 2');
+INSERT INTO `employee` VALUES (1,'Abhijeet Gurle','dept 1','asd','daily','ada','city 1'),(2,'asdad','Electrical','asdasdad','daily','m.tech','Pune'),(3,'Sankalp','dept 1','ws','daily','ssasas','city 1'),(5,'Roshan','Electrical','Pune','daily','BE','Pune'),(123,'123','Electrical','assa','daily','asaas','Pune');
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,12 +52,12 @@ DROP TABLE IF EXISTS `login`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `login` (
-  `empid` int(11) NOT NULL AUTO_INCREMENT,
+  `empid` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
-  PRIMARY KEY (`empid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (1,'admin','roshan','admin123@gmail.com');
+INSERT INTO `login` VALUES (1,'admin','admin','admin123@gmail.com'),(1234,'fef','ffg vdvd','csff@gmail.com');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,9 @@ CREATE TABLE `payment` (
   `PT` int(11) NOT NULL,
   `total_deduction` int(11) NOT NULL,
   `date_of_payment` varchar(30) NOT NULL,
-  PRIMARY KEY (`empid`)
+  PRIMARY KEY (`payslip_no`),
+  KEY `empid` (`empid`),
+  CONSTRAINT `payment_employee_fk` FOREIGN KEY (`empid`) REFERENCES `employee` (`empid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -102,7 +104,7 @@ CREATE TABLE `payment` (
 
 LOCK TABLES `payment` WRITE;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
-INSERT INTO `payment` VALUES (1,'122',5800,3256,453,754,435,13004,23702,1087,724,200,2011,'04-Aug-17'),(2,'12',5426,3046,424,706,407,1514,11523,1017,678,200,1894,'04-Aug-17');
+INSERT INTO `payment` VALUES (2,'12',50000,122,1212,1221,1221,1212,59988,6615,4410,1221,12245,'12'),(1,'122',5800,3256,453,754,435,13004,23702,1087,724,200,2011,'04-Aug-17'),(5,'1234',50000,12,345,2345,1223,12,103937,12001,8001,200,20202,'20/11/2017');
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -139,4 +141,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-13 14:47:47
+-- Dump completed on 2017-11-08 18:22:40
