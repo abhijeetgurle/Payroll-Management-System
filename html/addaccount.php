@@ -1,3 +1,45 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "mi<Abhijeet>-F25";
+$dbname = "payrolladmin";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+if(isset($_POST['submit'])){
+    $emp_id = $_POST['empid'];
+    $emp_username = $_POST['username'];
+    $emp_password = $_POST['password'];
+    $emp_email = $_POST['email'];
+
+    $sql = "INSERT INTO login VALUES ('$emp_id','$emp_username','$emp_password','$emp_email')";
+
+    if(mysqli_query($conn, $sql)){
+
+        echo "<script type=\"text/javascript\">".
+        "alert('Account Created Successfully');".
+        "</script>";
+
+    }
+    else{
+        echo "<script type=\"text/javascript\">".
+        "alert('Failed to Create account');".
+        "</script>";
+    }
+}
+ 
+
+// close connection
+
+mysqli_close($link);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +50,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Creative - Bootstrap Admin Template</title>
+    <title>Payroll Admin</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +84,6 @@
     <script>
 function validateForm() {
     confirm("Do you want to continue?");
-    alert("Account Created Succefully");
 }
 </script>
 
@@ -353,6 +394,7 @@ function validateForm() {
                           <li><a class="" href="updateemployee.php">Insert Info</a></li>
                           <li><a class="" href="updateemployee2.php">Update Info</a></li>
                           <li><a class="" href="updateemployee3.php">Delete Info</a></li>
+                          <li><a class="" href="updateemployee4.php">View Info</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -408,7 +450,7 @@ function validateForm() {
 
             
             <div class="panel-body">
-            <form class="form-horizontal " method="post" action="account1.php" onsubmit="return validateForm()" name="myform1">
+            <form class="form-horizontal " method="post" action="addaccount.php" onsubmit="return validateForm()" name="myform1">
               <div class="form-group">
                 <label class="col-sm-2 control-label">Employee ID</label>
                 <div class="col-sm-10">
@@ -437,7 +479,7 @@ function validateForm() {
               </div>
                               
 
-              <center><input type="submit" value="Submit" >
+              <center><input type="submit" name="submit" value="submit" >
                     <button>Cancel</button>
             <br><br>
                           </div>

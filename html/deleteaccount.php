@@ -1,3 +1,39 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "mi<Abhijeet>-F25";
+$dbname = "payrolladmin";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if(isset($_POST['submit'])){
+  $emp_id = $_POST['empid'];
+  $emp_id = trim($emp_id);
+  $sql = "DELETE FROM login WHERE empid='$emp_id'";
+
+  if(mysqli_query($conn, $sql)){
+      echo "<script type=\"text/javascript\">".
+      "alert('Account Deleted Successfully');".
+        "</script>";
+  }
+  else{
+   echo "<script type=\"text/javascript\">".
+        "alert('Failed to delete Account');".
+        "</script>";
+  }
+}  
+
+mysqli_close($link);
+//header("Location: deleteaccount.php"); /* Redirect browser */
+//exit();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +44,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Creative - Bootstrap Admin Template</title>
+    <title>Payroll Admin</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +78,6 @@
     <script>
     function validateForm() {
     confirm("Do you want to continue?");
-    alert("Account Deleted Succefully");
 }
 </script>
   </head>
@@ -197,6 +232,7 @@
                           <li><a class="" href="updateemployee.php">Insert Info</a></li>
                           <li><a class="" href="updateemployee2.php">Update Info</a></li>
                           <li><a class="" href="updateemployee3.php">Delete Info</a></li>
+                          <li><a class="" href="updateemployee4.php">View Info</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -251,7 +287,7 @@
             </div>
 
             <div class="panel-body">
-            <form class="form-horizontal " method="post" action="account2.php" onsubmit="return validateForm()" name="myform1">
+            <form class="form-horizontal " method="post" action="deleteaccount.php" onsubmit="return validateForm()" name="myform1">
               <div class="form-group">
                 <label class="col-sm-2 control-label">Employee ID</label>
                 <div class="col-sm-10">
@@ -259,7 +295,7 @@
                 </div>
               </div>
 
-              <center><input type="submit" value="Submit" >
+              <center><input type="submit" name="submit" value="Submit">
                     <button>Cancel</button>
             <br><br>
                           </div>

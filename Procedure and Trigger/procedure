@@ -1,0 +1,11 @@
+DELIMITER $$
+CREATE PROCEDURE calculatesalary(IN empid1 INT, OUT salary INT)
+BEGIN
+	DECLARE gross_wages1,total_deduction1 INT DEFAULT 0;
+	
+	SELECT gross_wages INTO gross_wages1 FROM payment WHERE empid = empid1;
+	SELECT total_deduction INTO total_deduction1 FROM payment WHERE empid = empid1;
+
+	salary = gross_wages1 - total_deduction1;
+
+END $$	

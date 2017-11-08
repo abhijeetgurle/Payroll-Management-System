@@ -8,7 +8,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Creative - Bootstrap Admin Template</title>
+    <title>Payroll Admin</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -192,6 +192,7 @@
                           <li><a class="" href="updateemployee.php">Insert Info</a></li>
                           <li><a class="" href="updateemployee2.php">Update Info</a></li>
                           <li><a class="" href="updateemployee3.php">Delete Info</a></li>
+                          <li><a class="" href="updateemployee4.php">View Info</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">

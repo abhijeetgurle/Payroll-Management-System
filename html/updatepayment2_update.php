@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "mi<Abhijeet>-F25";
 $dbname = "payrolladmin";
 
 // Create connection
@@ -253,6 +253,7 @@ function validateForm() {
                           <li><a class="" href="updateemployee.php">Insert Info</a></li>
                           <li><a class="" href="updateemployee2.php">Update Info</a></li>
                           <li><a class="" href="updateemployee3.php">Delete Info</a></li>
+                          <li><a class="" href="updateemployee4.php">View Info</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">

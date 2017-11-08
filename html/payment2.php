@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "mi<Abhijeet>-F25";
 $dbname = "payrolladmin";
 
 // Create connection

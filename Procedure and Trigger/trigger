@@ -1,0 +1,11 @@
+DELIMITER $$
+CREATE TRIGGER check_salary BEFORE INSERT ON payment
+FOR EACH ROW
+	IF NEW.basic_salary < 3000
+	THEN
+		SET NEW.basic_salary = 3000;
+	ELSEIF NEW.basic_salary > 50000
+	THEN 
+		SET NEW.basic_salary = 50000;
+	END IF;		
+END$$	
